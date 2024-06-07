@@ -1,0 +1,16 @@
+/* Estilos personalizados para el input range */
+/* input[type="range"] {
+    @apply w-full h-2 bg-zinc-950 rounded-lg appearance-none cursor-pointer;
+} */
+
+input[type="range"]::-webkit-slider-thumb {
+    @apply w-4 h-4 bg-cyan-600 rounded-full appearance-none border-2 border-zinc-900;
+}
+
+input[type="range"]::-moz-range-thumb {
+    @apply w-4 h-4 bg-cyan-600 rounded-full border-2 border-zinc-900;
+}
+
+input[type="range"]::-ms-thumb {
+    @apply w-4 h-4 bg-cyan-600 rounded-full border-2 border-zinc-900;
+}
