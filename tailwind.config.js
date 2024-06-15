@@ -5,7 +5,11 @@ export default {
     './src/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
-    extend: {}
+    extend: {
+      minHeight: {
+        'screen-dvh': 'calc(100dvh - 4rem)'
+      }
+    }
   },
   plugins: []
 }

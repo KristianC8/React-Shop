@@ -22,6 +22,13 @@
   scrollbar-width: thin;
 }
 
+@media (max-width: 768px) {
+  * {
+    scrollbar-width: none
+  }
+
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

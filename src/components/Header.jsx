@@ -1,5 +1,7 @@
 import { Cart } from './Cart'
+import { ButtonMobileMenu } from './ButtonMobileMenu'
 import { ReactIcon } from './icons/ReactIcon'
+import { NavLink } from 'react-router-dom'
 
 export const Header = () => {
   return (
@@ -9,17 +11,18 @@ export const Header = () => {
         <h1>SHOP</h1>
       </div>
       <div>
-        <nav className='flex items-center gap-4'>
-          <a href='#'>Home</a>
-          <a href='#'>Products</a>
-          <a href='#'>Any</a>
+        <nav className='items-center gap-4 hidden md:flex'>
+          <NavLink to='/' className={({ isActive }) => (isActive ? ' text-cyan-600' : undefined)}>Home</NavLink>
+          <NavLink to='/products' className={({ isActive }) => (isActive ? ' text-cyan-600' : undefined)}>Products</NavLink>
+          <NavLink to='any' className={({ isActive }) => (isActive ? ' text-cyan-600' : undefined)}>Any</NavLink>
         </nav>
       </div>
-      <div className='flex items-center gap-4'>
+      <div className=' items-center gap-4 hidden md:flex'>
         <button>Login</button>
         <Cart />
         <button>Theme</button>
       </div>
+      <ButtonMobileMenu />
 
     </header>
   )
