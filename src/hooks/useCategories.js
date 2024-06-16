@@ -10,14 +10,29 @@ export const useCategories = () => {
   const checkboxWomensWatchesId = useId()
   const checkboxMotorcycleId = useId()
 
-  const [isSelectedCheckAll, setIsSelectedCheckAll] = useState(true)
-  const [checkboxes, setCheckboxes] = useState({
+  const [isSelectedCheckAll, setIsSelectedCheckAll] = useState(() => {
+    const savedFilters = sessionStorage.getItem('savedFilters')
+    const savedCategories = JSON.parse(savedFilters)
+    if (!savedFilters || savedCategories.category.includes('all')) return true
+    return false
+  })
+  /* global sessionStorage */
+  let initialStateCheck = {
     laptops: false,
     tablets: false,
     'mobile-accessories': false,
     'mens-watches': false,
     'womens-watches': false,
     motorcycle: false
+  }
+  const [checkboxes, setCheckboxes] = useState(() => {
+    const savedFilters = sessionStorage.getItem('savedFilters')
+    const savedCategories = JSON.parse(savedFilters)
+    if (!savedFilters) return initialStateCheck
+    Object.keys(initialStateCheck).forEach((key) => {
+      if (savedCategories.category.includes(key)) initialStateCheck = { ...initialStateCheck, [key]: true }
+    })
+    return initialStateCheck
   })
   const { filters, setFilters } = useFilteredProducts()
 

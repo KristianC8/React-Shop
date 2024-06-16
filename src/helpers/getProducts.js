@@ -19,7 +19,6 @@ export const getProducts = async (url) => {
         name: product.title,
         price: product.price,
         category: product.category,
-        description: product.description,
         image: product.thumbnail
       }
     ))
