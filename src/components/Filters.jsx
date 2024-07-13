@@ -31,7 +31,7 @@ export const Filters = () => {
           step={10}
           value={filters.price}
           onChange={handleChangePrice}
-          className='filters-inputPrice w-full h-3 bg-gray-200 appearance-none cursor-pointer dark:bg-zinc-950 border-2 border-cyan-600 rounded-md focus:outline-none'
+          className='filters-inputPrice w-full h-3 bg-gray-200 appearance-none cursor-pointer dark:bg-zinc-950 border-2 border-primary rounded-md focus:outline-none'
         />
         {/* <span className='text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6'>Min ($0)</span> */}
         {/* <span className='text-sm text-gray-500 dark:text-gray-400 absolute start-1/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6'>$500</span>
@@ -53,12 +53,12 @@ export const Filters = () => {
           <label
             key={i} className={
             category.checked
-              ? 'check flex gap-2 px-6 py-2 bg-gradient-to-r from-zinc-200 dark:from-zinc-900 border-x-2 border-cyan-600 leading-5'
+              ? 'check flex gap-2 px-6 py-2 bg-gradient-to-r from-zinc-200 dark:from-zinc-900 border-x-2 border-primary leading-5'
               : 'check flex gap-2 px-6 py-2 bg-gradient-to-r from-zinc-200 dark:from-zinc-900 border-l-2 border-transparent leading-5'
           } htmlFor={category.id}
           >
             <input
-              className=' w-4 h-4 m-0 accent-cyan-600 '
+              className=' w-4 h-4 m-0 accent-primary '
               type='checkbox'
               id={category.id}
               name={category.name}

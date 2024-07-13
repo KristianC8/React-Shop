@@ -6,9 +6,16 @@
   <link rel="icon" type="image/svg+xml" href="./src/assets/img/react.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>React Online Store</title>
+  <script>
+    if (localStorage.shopTheme === 'dark' || (!('shopTheme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.querySelector('html').classList.add('dark');
+    } else {
+      document.querySelector('html').classList.remove('dark');
+    }
+  </script>
 </head>
 
-<body>
+<body class="bg-primaryLight dark:bg-primaryDark text-primaryDark dark:text-primaryLight">
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
