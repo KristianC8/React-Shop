@@ -30,7 +30,7 @@
 }
 
 * {
-  scrollbar-color: #0891b2 transparent;
+  scrollbar-color: #0891b2 #383941;
   scrollbar-width: thin;
   scroll-behavior: smooth;
 }
