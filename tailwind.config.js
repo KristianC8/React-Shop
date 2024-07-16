@@ -17,6 +17,19 @@ export default {
       },
       minHeight: {
         'screen-dvh': 'calc(100vh - 4rem)'
+      },
+      backgroundColor: {
+        'custom-dark': '#09090b',
+        'custom-light': '#d8d8d8'
+      },
+      animation: {
+        fade: 'fadeIn .5s ease-in-out'
+      },
+      keyframes: {
+        fadeIn: {
+          from: { opacity: 0 },
+          to: { opacity: 1 }
+        }
       }
     }
   },

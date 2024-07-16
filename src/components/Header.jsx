@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { MoonIcon } from './icons/MoonIcon'
 import { SunIcon } from './icons/SunIcon'
 import { SystemIcon } from './icons/SystemIcon'
+import { Login } from './Login'
 
 export const Header = () => {
   const { theme, handleThemeLight, handleThemeDark, handleThemeSystem } = useTheme()
@@ -30,13 +31,15 @@ export const Header = () => {
         </nav>
       </div>
       <div className='flex items-center gap-1'>
+        <Login />
         <div className=' items-center gap-4 hidden md:flex font-medium'>
-          <button>Login</button>
           <Cart />
         </div>
         <ButtonMobileMenu />
         <div className='relative z-20' onClick={handleMenuTheme}>
-          <button className='focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary rounded p-2'>
+          <button className='focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary rounded p-2 md:focus:ring-0
+          md:focus:ring-inset-0 md:focus:ring-transparent md:focus:outline-0 hover:text-primary transition-colors'
+          >
             <span className={`${theme === 'light' ? 'block' : 'hidden'}
           ${theme === 'light' && ('shopTheme' in localStorage) ? 'text-primary' : 'text-inherit'}
           ${!('shopTheme' in localStorage) && 'text-inherit'}`}
@@ -51,7 +54,9 @@ export const Header = () => {
             </span>
           </button>
 
-          <div className={`${!isThemeMenuVisible ? 'hidden' : 'block'} absolute top-14 left-[-1px] backdrop-blur-lg border border-secondaryLight dark:border-secondaryDark rounded-md p-2 z-10`}>
+          <div className={`${!isThemeMenuVisible ? 'hidden' : 'block'} absolute top-14 left-[-1px] backdrop-blur-lg border 
+          border-secondaryLight dark:border-secondaryDark rounded-md p-2 z-10 animate-fade`}
+          >
             {/* global localStorage */}
             <button
               className={`${theme === 'light' && ('shopTheme' in localStorage) ? 'text-primary' : 'text-inherit'}`}

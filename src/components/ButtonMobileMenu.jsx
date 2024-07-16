@@ -17,7 +17,8 @@ export const ButtonMobileMenu = () => {
     <div className=' flex items-center md:hidden'>
       <button
         onClick={toggleMenu}
-        className='inline-flex items-center justify-center p-2 rounded-md text-primaryDark dark:text-primaryLight hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary z-20'
+        className='inline-flex items-center justify-center p-2 rounded-md text-primaryDark dark:text-primaryLight
+         hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary z-20'
         aria-expanded={isOpen ? 'true' : 'false'}
       >
         <span className='sr-only'>Open main menu</span>
@@ -30,7 +31,7 @@ export const ButtonMobileMenu = () => {
       {
         isOpen && (
         // <div className='z-[97] w-full xl:block bg-lightColor-100 dark:bg-grayshade-500 xl:border-2 border-grayshade-50 dark:border-grayshade-300 xl:rounded-full xl:px-8 flex flex-col items-center justify-center h-screen top-0 left-0 fixed xl:h-min xl:[position:initial]'>
-          <div className='md:hidden fixed top-0 left-0 w-full h-dvh bg-primaryLight dark:bg-primaryDark text-primaryDark dark:text-primaryLight z-10 flex flex-col justify-center items-center'>
+          <div className='mobile-menu md:hidden fixed top-0 left-0 w-full h-dvh bg-primaryLight dark:bg-primaryDark text-primaryDark dark:text-primaryLight z-10 flex flex-col justify-center items-center'>
             <div className='flex flex-col gap-4'>
               <NavLink to='/' onClick={toggleMenu} className={({ isActive }) => (isActive ? 'text-cyan-600' : undefined) + ' block px-3 py-2 rounded-md text-xl font-medium hover:text-primary'}>
                 Home
