@@ -4,6 +4,23 @@ export const AuthenticatedContext = createContext()
 
 export const AuthenticatedProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isLoginVisible, setIsLoginVisible] = useState(false)
+  const [buttonId, setButtonId] = useState(null)
+  const [actualProduct, setActualProduct] = useState(null)
+
+  const handleActualProduct = (product) => {
+    setActualProduct(product)
+  }
+
+  const handleOpenModal = (id) => {
+    setIsLoginVisible(true)
+    setButtonId(id)
+  }
+  const handleCloseModal = () => {
+    setIsLoginVisible(false)
+    setButtonId(null)
+    setActualProduct(null)
+  }
 
   const handleLogin = () => {
     setIsAuthenticated(true)
@@ -18,8 +35,14 @@ export const AuthenticatedProvider = ({ children }) => {
   return (
     <AuthenticatedContext.Provider value={{
       isAuthenticated,
+      isLoginVisible,
+      buttonId,
+      actualProduct,
       handleLogin,
-      handleLogout
+      handleLogout,
+      handleOpenModal,
+      handleCloseModal,
+      handleActualProduct
     }}
     >
       {children}

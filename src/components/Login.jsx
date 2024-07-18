@@ -2,6 +2,8 @@ import { UserIcon } from './icons/UserIcon'
 import { CloseIcon } from './icons/CloseIcon'
 import { useLogin } from '../hooks/useLogin'
 import { UserCircleIcon } from './icons/UserCircleIcon'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { useCart } from '../hooks/useCart'
 
 export const Login = () => {
   const {
@@ -16,6 +18,10 @@ export const Login = () => {
     handleMenuUser,
     handleMenuUserClick
   } = useLogin()
+
+  const { clearCart } = useCart()
+  const location = useLocation()
+  const navigate = useNavigate()
 
   return (
     isAuthenticated
@@ -33,6 +39,10 @@ export const Login = () => {
                 onClick={() => {
                   handleLogout()
                   handleMenuUser()
+                  clearCart()
+                  if (location.pathname === '/shop_cart') {
+                    navigate('./products')
+                  }
                 }} className=' bg-primary rounded font-bold p-1'
               >Logout
               </button>
@@ -46,7 +56,7 @@ export const Login = () => {
             className='flex items-center hover:text-primary transition-all text-xl font-medium md:text-base p-2 md:px-2 gap-2
         md:gap-0 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary rounded-md md:focus:ring-0 md:focus:ring-inset-0
         md:focus:ring-transparent md:focus:outline-0'
-            onClick={handleOpenModal}
+            onClick={() => handleOpenModal('login')}
           >
             <UserIcon />
             <span className='hidden md:block'>Login</span>
@@ -55,7 +65,7 @@ export const Login = () => {
             <dialog className='relative bg-custom-light dark:bg-custom-dark w-4/5 md:w-96 animate-fade p-10 shadow-lg dark:shadow-none
         flex flex-col gap-4 rounded-md'
             >
-              <button className='absolute top-2 right-2' onClick={handleCloseModal}>
+              <button className='absolute top-2 right-2 text-primaryDark dark:text-primaryLight' onClick={handleCloseModal}>
                 <CloseIcon />
               </button>
               <h3 className='self-center text-xl font-bold text-primary'>Login</h3>
@@ -63,15 +73,15 @@ export const Login = () => {
                 <div className='flex flex-col gap-1'>
                   <label className='text-secondaryLight dark:text-bgImgGray' htmlFor='user'>User</label>
                   <input
-                    className='rounded-md px-2 py-1 bg-bgImgGray dark:bg-secondaryLight' type='text' name='user' id='user'
-                    value={formData.user} readOnly
+                    className='rounded-md px-2 py-1 bg-bgImgGray dark:bg-secondaryLight text-primaryDark dark:text-primaryLight'
+                    type='text' name='user' id='user' value={formData.user} readOnly
                   />
                 </div>
                 <div className='flex flex-col gap-1'>
                   <label className='text-secondaryLight dark:text-bgImgGray' htmlFor='password'>Password</label>
                   <input
-                    className='rounded-md px-2 py-1 bg-bgImgGray dark:bg-secondaryLight' type='password' name='password' id='password'
-                    value={formData.password} readOnly
+                    className='rounded-md px-2 py-1 bg-bgImgGray dark:bg-secondaryLight text-primaryDark dark:text-primaryLight'
+                    type='password' name='password' id='password' value={formData.password} readOnly
                   />
                 </div>
                 <button type='submit' className='px-4 py-2 bg-primary rounded font-bold'>Login</button>

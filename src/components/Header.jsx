@@ -20,14 +20,14 @@ export const Header = () => {
           <NavLink to='any' className={({ isActive }) => (isActive ? ' text-primary' : undefined)}>Any</NavLink>
         </nav>
       </div>
-      <div className='flex items-center gap-1'>
+      <div className='flex items-center md:gap-1'>
         <Login />
         <ShopCart />
         <div className=' items-center gap-4 hidden md:flex font-medium'>
           <Cart />
         </div>
-        <ButtonMobileMenu />
         <Theme />
+        <ButtonMobileMenu />
       </div>
 
     </header>
