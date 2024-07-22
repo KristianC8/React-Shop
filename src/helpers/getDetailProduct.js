@@ -10,7 +10,8 @@ export const getDetailProduct = async ({ params }) => {
       category: product.category,
       description: product.description,
       image: product.thumbnail,
-      images: product.images
+      images: product.images,
+      stock: product.stock
     }
     return { mappedProduct }
   } catch (error) {

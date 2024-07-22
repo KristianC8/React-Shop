@@ -32,7 +32,7 @@ export const Theme = () => {
       </button>
 
       <div className={`${!isThemeMenuVisible ? 'hidden' : 'block'} absolute top-14 left-[-1px] backdrop-blur-3xl border 
-          border-secondaryLight dark:border-secondaryDark rounded-md p-2 z-10 animate-fade`}
+          border-secondaryLight dark:border-zinc-900 rounded-md p-2 z-10 animate-fade`}
       >
         {/* global localStorage */}
         <button

@@ -23,12 +23,35 @@ export default {
         'custom-light': '#d8d8d8'
       },
       animation: {
-        fade: 'fadeIn .5s ease-in-out'
+        fade: 'fadeIn .5s ease-in-out',
+        // 'fade-in-down': 'fade-in-down 0.6s ease-in-out both'
+        fadeindown: 'fade-in-down 1s ease-in 0.25s 1',
+        fadeinleft: 'fade-in-left 1s ease-in-out 0.1s 1'
       },
       keyframes: {
         fadeIn: {
           from: { opacity: 0 },
           to: { opacity: 1 }
+        },
+        'fade-in-down': {
+          from: {
+            opacity: 0,
+            transform: 'translate3d(0, -100%, 0)'
+          },
+          to: {
+            opacity: 1,
+            transform: 'translate3d(0, 0, 0)'
+          }
+        },
+        'fade-in-left': {
+          from: {
+            opacity: 0,
+            transform: 'translate3d(-100%, 0, 0)'
+          },
+          to: {
+            opacity: 1,
+            transform: 'translate3d(0, 0, 0)'
+          }
         }
       }
     }

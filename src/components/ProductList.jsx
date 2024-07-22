@@ -3,12 +3,23 @@ import { Link } from 'react-router-dom'
 import { useLogin } from '../hooks/useLogin'
 import { ShoppingCartPlusIcon } from './icons/ShoppingCartPlusIcon'
 import { ShoppingCartXIcon } from './icons/ShoppingCartXIcon'
+import toast, { Toaster } from 'react-hot-toast'
+import 'tailwindcss/tailwind.css'
 
 export const ProductList = ({ products }) => {
   const { isAuthenticated, handleOpenModal, handleActualProduct } = useLogin()
   const { cart, addToCart, removeFromCart } = useCart()
   const isItemInCart = (product) => cart.some(item => item.id === product.id)
-  // console.log(cart)
+  const notifyAddCart = () => toast.success('successfully added to cart', {
+    duration: 2000,
+    position: 'bottom-center',
+    className: 'bg-primaryLight dark:bg-zinc-900 text-primaryDark dark:text-primaryLight ',
+    iconTheme: {
+      primary: '#0891b2',
+      secondary: '#fff'
+    }
+  })
+
   return (
     products?.length > 0
       ? (
@@ -39,25 +50,31 @@ export const ProductList = ({ products }) => {
                     <h3 className=' h-12 flex items-center text-base font-medium'>{product.name}</h3>
                     <button
                       onClick={() => {
+                        if (product.stock === 0) return
                         if (isAuthenticated) {
-                          isInCart
-                            ? removeFromCart(product)
-                            : addToCart(product)
+                          if (isInCart) {
+                            removeFromCart(product)
+                          } else {
+                            addToCart(product)
+                            notifyAddCart()
+                          }
                         } else {
                           handleOpenModal('products')
                           handleActualProduct(product)
                         }
-                      }} className=' w-full flex justify-center items-center gap-1
-                    bg-primary px-3 py-1 rounded-md text-base font-medium'
+                      }} className={`${product.stock === 0 ? 'bg-cyan-950' : 'bg-primary'} w-full flex justify-center items-center gap-1
+                     px-3 py-1 rounded-md text-base font-medium`}
                     >{isInCart ? <ShoppingCartXIcon /> : <ShoppingCartPlusIcon />}
-                      <span>{isInCart ? 'Remove From Cart' : 'Add To Cart'}</span>
+                      <span>{product.stock === 0 ? 'Out of Stock' : isInCart ? 'Remove From Cart' : 'Add To Cart'}</span>
                     </button>
+
                   </div>
                 </article>
               )
             })
 
               }
+          <Toaster />
         </div>
         )
       : <p>No hay productos disponibles...</p>

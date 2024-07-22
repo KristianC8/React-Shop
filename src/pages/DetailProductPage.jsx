@@ -5,6 +5,8 @@ import { useLogin } from '../hooks/useLogin'
 import { ArrowLeftIcon } from '../components/icons/ArrowLeftIcon'
 import { ShoppingCartPlusIcon } from '../components/icons/ShoppingCartPlusIcon'
 import { ShoppingCartXIcon } from '../components/icons/ShoppingCartXIcon'
+import toast, { Toaster } from 'react-hot-toast'
+import 'tailwindcss/tailwind.css'
 // import './DetailProductPage.css'
 
 export const DetailProductPage = () => {
@@ -21,6 +23,16 @@ export const DetailProductPage = () => {
   const handleNavigateBack = () => {
     navigate(-1)
   }
+
+  const notifyAddCart = () => toast.success('successfully added to cart', {
+    duration: 2000,
+    position: 'bottom-center',
+    className: 'bg-primaryLight dark:bg-zinc-900 text-primaryDark dark:text-primaryLight ',
+    iconTheme: {
+      primary: '#0891b2',
+      secondary: '#fff'
+    }
+  })
 
   return (
     <section className='detailProduct flex justify-center items-center min-h-screen-dvh py-4 lg:py-0'>
@@ -57,27 +69,34 @@ export const DetailProductPage = () => {
             <span className='font-semibold'>Description:</span>
             <p className='text-sm text-sencondaryLight dark:text-secondaryDark'>{mappedProduct.description}</p>
           </div>
-          <div>
-            <span className='font-semibold'>Category:</span>
-            <span className=' w-fit flex justify-center border border-primary mt-2 px-2 py-2 leading-3 h-fit rounded-md text-md
+          <div className='flex gap-[25%]'>
+            <div>
+              <span className='font-semibold'>Category:</span>
+              <span className=' w-fit flex justify-center border border-primary mt-2 px-2 py-2 leading-3 h-fit rounded-md text-md
             opacity-90'
-            >{`${mappedProduct.category[0].toUpperCase()}${mappedProduct.category.slice(1)}`}
-            </span>
+              >{`${mappedProduct.category[0].toUpperCase()}${mappedProduct.category.slice(1)}`}
+              </span>
+            </div>
+            <span className='font-semibold'>Stock: {mappedProduct.stock} </span>
           </div>
           <button
-            className=' w-full bg-primary px-3 py-1 rounded-md font-medium flex justify-center items-center gap-1'
+            className={`${mappedProduct.stock === 0 ? 'bg-cyan-950' : 'bg-primary'} w-full px-3 py-1 rounded-md font-medium flex justify-center items-center gap-1`}
             onClick={() => {
+              if (mappedProduct.stock === 0) return
               if (isAuthenticated) {
-                isInCart
-                  ? removeFromCart(mappedProduct)
-                  : addToCart(mappedProduct)
+                if (isInCart) {
+                  removeFromCart(mappedProduct)
+                } else {
+                  addToCart(mappedProduct)
+                  notifyAddCart()
+                }
               } else {
                 handleOpenModal('products')
                 handleActualProduct(mappedProduct)
               }
             }}
           >{isInCart ? <ShoppingCartXIcon /> : <ShoppingCartPlusIcon />}
-            <span>{isInCart ? 'Remove From Cart' : 'Add To Cart'}</span>
+            <span>{mappedProduct.stock === 0 ? 'Out of Stock' : isInCart ? 'Remove From Cart' : 'Add To Cart'}</span>
           </button>
         </div>
         <button
@@ -92,6 +111,7 @@ export const DetailProductPage = () => {
           </span>
         </button>
       </article>
+      <Toaster />
     </section>
   )
 }

@@ -6,6 +6,7 @@ import { ErrorPage } from '../pages/ErrorPage'
 import { DetailProductPage } from '../pages/DetailProductPage'
 import { getDetailProduct } from '../helpers/getDetailProduct'
 import { CartPage } from '../pages/CartPage'
+import { PaymentPage } from '../pages/PaymentPage'
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
       {
         path: '/shop_cart',
         element: <CartPage />
+      },
+      {
+        path: '/payment',
+        element: <PaymentPage />
       }
     ]
   }

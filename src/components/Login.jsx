@@ -59,7 +59,7 @@ export const Login = () => {
             onClick={() => handleOpenModal('login')}
           >
             <UserIcon />
-            <span className='hidden md:block'>Login</span>
+            <span className='hidden md:block text-lg leading-5'>Login</span>
           </button>
           <article className={`${isLoginVisible ? 'block' : 'hidden'} fixed top-0 left-0 w-full h-screen md:h-screen z-30 bg-custom-light dark:bg-custom-dark bg-opacity-90 dark:bg-opacity-90 flex justify-center items-center`}>
             <dialog className='relative bg-custom-light dark:bg-custom-dark w-4/5 md:w-96 animate-fade p-10 shadow-lg dark:shadow-none

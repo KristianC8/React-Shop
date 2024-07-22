@@ -19,7 +19,8 @@ export const getProducts = async (url) => {
         name: product.title,
         price: product.price,
         category: product.category,
-        image: product.thumbnail
+        image: product.thumbnail,
+        stock: product.stock
       }
     ))
     return mappedData
