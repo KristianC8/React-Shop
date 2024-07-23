@@ -7,7 +7,6 @@ import { ShoppingCartPlusIcon } from '../components/icons/ShoppingCartPlusIcon'
 import { ShoppingCartXIcon } from '../components/icons/ShoppingCartXIcon'
 import toast, { Toaster } from 'react-hot-toast'
 import 'tailwindcss/tailwind.css'
-// import './DetailProductPage.css'
 
 export const DetailProductPage = () => {
   const { mappedProduct } = useLoaderData()
@@ -27,7 +26,7 @@ export const DetailProductPage = () => {
   const notifyAddCart = () => toast.success('successfully added to cart', {
     duration: 2000,
     position: 'bottom-center',
-    className: 'bg-primaryLight dark:bg-zinc-900 text-primaryDark dark:text-primaryLight ',
+    className: 'bg-primaryLight dark:bg-zinc-900 text-primaryDark dark:text-primaryLight 2xl:text-2xl',
     iconTheme: {
       primary: '#0891b2',
       secondary: '#fff'
@@ -63,24 +62,25 @@ export const DetailProductPage = () => {
           />
         </div>
         <div className='detailProduct-info w-[85%] lg:w-[40%] flex flex-col gap-3 2xl:gap-6 lg:h-full lg:justify-center pt-4 md:pt-0'>
-          <h2 className='text-2xl md:text-3xl font-bold text-primaryDark dark:text-primaryLight'>{mappedProduct.name}</h2>
-          <p className='text-2xl font-bold'>{`$${mappedProduct.price}`}</p>
+          <h3 className='text-2xl md:text-3xl 2xl:text-4xl font-bold text-primaryDark dark:text-primaryLight'>{mappedProduct.name}</h3>
+          <p className='text-2xl 2xl:text-3xl font-bold'>{`$${mappedProduct.price}`}</p>
           <div>
-            <span className='font-semibold'>Description:</span>
-            <p className='text-sm text-sencondaryLight dark:text-secondaryDark'>{mappedProduct.description}</p>
+            <span className='font-semibold 2xl:text-2xl'>Description:</span>
+            <p className='text-sm text-sencondaryLight dark:text-secondaryDark 2xl:text-xl'>{mappedProduct.description}</p>
           </div>
           <div className='flex gap-[25%]'>
             <div>
-              <span className='font-semibold'>Category:</span>
-              <span className=' w-fit flex justify-center border border-primary mt-2 px-2 py-2 leading-3 h-fit rounded-md text-md
-            opacity-90'
+              <span className='font-semibold 2xl:text-2xl'>Category:</span>
+              <span className=' w-fit flex justify-center border border-primary mt-2 px-2 py-2 2xl:py-1 leading-3 h-fit rounded-md text-md
+            opacity-90 2xl:text-xl 2xl:leading-5'
               >{`${mappedProduct.category[0].toUpperCase()}${mappedProduct.category.slice(1)}`}
               </span>
             </div>
-            <span className='font-semibold'>Stock: {mappedProduct.stock} </span>
+            <span className='font-semibold 2xl:text-2xl'>Stock: {mappedProduct.stock} </span>
           </div>
           <button
-            className={`${mappedProduct.stock === 0 ? 'bg-cyan-950' : 'bg-primary'} w-full px-3 py-1 rounded-md font-medium flex justify-center items-center gap-1`}
+            className={`${mappedProduct.stock === 0 ? 'bg-cyan-950' : 'bg-primary'} w-full px-3 py-1 rounded-md font-medium 
+            flex justify-center items-center gap-1 2xl:text-2xl 2xl:gap-4`}
             onClick={() => {
               if (mappedProduct.stock === 0) return
               if (isAuthenticated) {
@@ -103,7 +103,7 @@ export const DetailProductPage = () => {
           className=' absolute top-2 right-2 bg-secondaryLight text-primaryLight px-0 py-2 sm:px-2 sm:py-1 rounded'
           onClick={handleNavigateBack}
         >
-          <span className='hidden sm:block'>
+          <span className='hidden sm:block 2xl:text-xl'>
             Back
           </span>
           <span className='sm:hidden'>

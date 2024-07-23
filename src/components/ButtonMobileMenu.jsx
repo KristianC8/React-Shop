@@ -33,13 +33,13 @@ export const ButtonMobileMenu = () => {
         // <div className='z-[97] w-full xl:block bg-lightColor-100 dark:bg-grayshade-500 xl:border-2 border-grayshade-50 dark:border-grayshade-300 xl:rounded-full xl:px-8 flex flex-col items-center justify-center h-screen top-0 left-0 fixed xl:h-min xl:[position:initial]'>
           <div className='mobile-menu md:hidden fixed top-0 left-0 w-full h-dvh bg-primaryLight dark:bg-primaryDark text-primaryDark dark:text-primaryLight z-10 flex flex-col justify-center items-center'>
             <div className='flex flex-col gap-4'>
-              <NavLink to='/' onClick={toggleMenu} className={({ isActive }) => (isActive ? 'text-cyan-600' : undefined) + ' block px-3 py-2 rounded-md text-xl font-medium hover:text-primary'}>
+              <NavLink to='/' onClick={toggleMenu} className={({ isActive }) => (isActive ? 'text-cyan-600' : undefined) + ' block px-3 py-2 rounded-md text-2xl font-medium hover:text-primary'}>
                 Home
               </NavLink>
-              <NavLink to='/products' onClick={toggleMenu} className={({ isActive }) => (isActive ? 'text-cyan-600' : undefined) + ' block px-3 py-2 rounded-md text-xl font-medium hover:text-primary'}>
+              <NavLink to='/products' onClick={toggleMenu} className={({ isActive }) => (isActive ? 'text-cyan-600' : undefined) + ' block px-3 py-2 rounded-md text-2xl font-medium hover:text-primary'}>
                 Products
               </NavLink>
-              <NavLink to='any' onClick={toggleMenu} className={({ isActive }) => (isActive ? 'text-cyan-600' : undefined) + ' block px-3 py-2 rounded-md text-xl font-medium hover:text-primary'}>
+              <NavLink to='any' onClick={toggleMenu} className={({ isActive }) => (isActive ? 'text-cyan-600' : undefined) + ' block px-3 py-2 rounded-md text-2xl font-medium hover:text-primary'}>
                 Any
               </NavLink>
             </div>

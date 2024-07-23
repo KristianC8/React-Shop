@@ -18,10 +18,10 @@ export const Filters = () => {
   }
 
   return (
-    <aside className='filters w-full md:min-w-56 md:w-56 h-full flex flex-col  gap-2 md:sticky top-1 py-8 md:py-0'>
+    <aside className='filters w-full md:min-w-56 md:w-56 2xl:min-w-64 h-full flex flex-col  gap-2 md:sticky top-1 py-8 md:py-0'>
       {/* <label htmlFor={inputPriceId}>Precio</label>
       <input type='range' id={inputPriceId} min={0} max={1000} step={10} className='w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700' /> */}
-      <div className='relative mb-6 w-full'>
+      <div className='2xl:text-xl relative mb-6 w-full'>
         <label htmlFor={inputPriceId} className=''>Price higher than:</label>
         <input
           id={inputPriceId}
@@ -36,7 +36,7 @@ export const Filters = () => {
         {/* <span className='text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6'>Min ($0)</span> */}
         {/* <span className='text-sm text-gray-500 dark:text-gray-400 absolute start-1/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6'>$500</span>
         <span className='text-sm text-gray-500 dark:text-gray-400 absolute start-2/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6'>$1000</span> */}
-        <span className='text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6'>{`$${filters.price}`}</span>
+        <span className='text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6 2xl:text-xl'>{`$${filters.price}`}</span>
       </div>
       {/* <label htmlFor={inputCategoryId}>Categoría</label>
       <select id={inputCategoryId}>
@@ -46,15 +46,15 @@ export const Filters = () => {
         <option value='Electronics'>Tecnología</option>
         <option value='Miscellaneous'>Varios</option>
       </select> */}
-      <div className='checkbox-container w-full flex flex-col gap-1 items-left justify-center '>
+      <div className='2xl:text-xl checkbox-container w-full flex flex-col gap-1 items-left justify-center '>
         <span>Categories:</span>
         {categories.map((category, i) => (
           // <div key={i} className='check flex gap-2 px-6 py-2 bg-gradient-to-r from-zinc-200 dark:from-zinc-900  dark:to-transparent border-x-2 border-cyan-600'>
           <label
             key={i} className={
             category.checked
-              ? 'check flex gap-2 px-6 py-2 bg-gradient-to-r from-zinc-200 dark:from-zinc-900 border-x-2 border-primary leading-5'
-              : 'check flex gap-2 px-6 py-2 bg-gradient-to-r from-zinc-200 dark:from-zinc-900 border-l-2 border-transparent leading-5'
+              ? 'check flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-zinc-200 dark:from-zinc-900 border-x-2 border-primary leading-5 2xl:text-lg'
+              : 'check flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-zinc-200 dark:from-zinc-900 border-l-2 border-transparent leading-5 2xl:text-lg'
           } htmlFor={category.id}
           >
             <input

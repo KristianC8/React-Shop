@@ -13,7 +13,7 @@ export const ProductList = ({ products }) => {
   const notifyAddCart = () => toast.success('successfully added to cart', {
     duration: 2000,
     position: 'bottom-center',
-    className: 'bg-primaryLight dark:bg-zinc-900 text-primaryDark dark:text-primaryLight ',
+    className: 'bg-primaryLight dark:bg-zinc-900 text-primaryDark dark:text-primaryLight 2xl:text-2xl',
     iconTheme: {
       primary: '#0891b2',
       secondary: '#fff'
@@ -23,7 +23,7 @@ export const ProductList = ({ products }) => {
   return (
     products?.length > 0
       ? (
-        <div className='products-grid w-full grid gap-x-6 gap-y-8 grid-cols-[repeat(auto-fill,minmax(220px,_1fr))]'>
+        <div className='products-grid w-full grid gap-x-6 gap-y-8 grid-cols-[repeat(auto-fill,minmax(220px,_1fr))] 2xl:grid-cols-[repeat(auto-fill,minmax(300px,_1fr))]'>
           {
             products.map(product => {
               const isInCart = isItemInCart(product)
@@ -39,15 +39,15 @@ export const ProductList = ({ products }) => {
                       src={product.image} alt={`Image of ${product.name}`}
                     />
                   </Link>
-                  <div className='flex flex-col gap-2 px-6 py-3'>
+                  <div className='flex flex-col gap-2 2xl:gap-4 px-6 py-3'>
                     <div className=' flex gap-2 justify-between items-center'>
-                      <span className='h-9 text-2xl font-semibold'>{`$${product.price}`}</span>
-                      <span className=' w-20 flex justify-center border border-primary px-2 py-1 leading-3 h-fit rounded-md
-                      text-xs opacity-90 font-medium'
+                      <span className='h-9 text-2xl 2xl:text-4xl font-semibold'>{`$${product.price}`}</span>
+                      <span className=' w-20 2xl:w-fit flex justify-center border border-primary px-2 py-1 leading-3 h-fit rounded-md
+                      text-xs 2xl:text-base opacity-90 font-medium'
                       >{`${product.category[0].toUpperCase()}${product.category.slice(1)}`}
                       </span>
                     </div>
-                    <h3 className=' h-12 flex items-center text-base font-medium'>{product.name}</h3>
+                    <h3 className=' h-12 flex items-center text-base 2xl:text-xl font-medium'>{product.name}</h3>
                     <button
                       onClick={() => {
                         if (product.stock === 0) return
@@ -63,7 +63,7 @@ export const ProductList = ({ products }) => {
                           handleActualProduct(product)
                         }
                       }} className={`${product.stock === 0 ? 'bg-cyan-950' : 'bg-primary'} w-full flex justify-center items-center gap-1
-                     px-3 py-1 rounded-md text-base font-medium`}
+                     2xl:gap-4 px-3 py-1 rounded-md text-base 2xl:text-2xl font-medium`}
                     >{isInCart ? <ShoppingCartXIcon /> : <ShoppingCartPlusIcon />}
                       <span>{product.stock === 0 ? 'Out of Stock' : isInCart ? 'Remove From Cart' : 'Add To Cart'}</span>
                     </button>
