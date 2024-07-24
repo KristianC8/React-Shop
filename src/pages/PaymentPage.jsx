@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { BagIcon } from '../components/icons/BagIcon'
 import { CheckIcon } from '../components/icons/CheckIcon'
 import { HomeIcon } from '../components/icons/HomeIcon'
+import imagePay from '../assets/img/ImagePay.webp'
 
 export const PaymentPage = () => {
   const getRandomArbitrary = (min, max) => {
@@ -18,7 +19,9 @@ export const PaymentPage = () => {
           <span className='text-2xl md:text-3xl 2xl:text-4xl font-bold text-primary flex items-center gap-0 md:gap-2'> Your order has been successfully processed <CheckIcon /></span>
           <span className='text-base sm:text-lg lg:text-xl 2xl:text-xl fornt-bold'>Order Id: {getRandomArbitrary(100000000000, 999999999999)}</span>
         </div>
-        <div />
+        <div className='flex justify-center'>
+          <img className='h-60 2xl:h-[450px]' src={imagePay} alt='pay-image' />
+        </div>
         <div className='flex flex-col gap-3'>
           <p className='text-base sm:text-lg lg:text-xl 2xl:text-xl fornt-bold'>
             Continue exploring our store to discover more amazing products.
@@ -34,7 +37,7 @@ export const PaymentPage = () => {
             </Link>
             <Link to='/'>
               <button className='w-full sm:w-fit bg-secondaryLight px-3 py-3 rounded-md font-medium flex justify-center items-center gap-1
-              text-base sm:text-lg lg:text-xl 2xl:text-xl'
+              text-base sm:text-lg lg:text-xl 2xl:text-xl text-primaryLight'
               >
                 <HomeIcon />
                 Home

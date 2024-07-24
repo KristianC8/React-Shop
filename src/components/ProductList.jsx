@@ -5,6 +5,7 @@ import { ShoppingCartPlusIcon } from './icons/ShoppingCartPlusIcon'
 import { ShoppingCartXIcon } from './icons/ShoppingCartXIcon'
 import toast, { Toaster } from 'react-hot-toast'
 import 'tailwindcss/tailwind.css'
+import { ProductsNotFound } from './ProductsNotFound'
 
 export const ProductList = ({ products }) => {
   const { isAuthenticated, handleOpenModal, handleActualProduct } = useLogin()
@@ -41,7 +42,7 @@ export const ProductList = ({ products }) => {
                   </Link>
                   <div className='flex flex-col gap-2 2xl:gap-4 px-6 py-3'>
                     <div className=' flex gap-2 justify-between items-center'>
-                      <span className='h-9 text-2xl 2xl:text-4xl font-semibold'>{`$${product.price}`}</span>
+                      <span className='h-9 text-2xl 2xl:text-3xl font-semibold'>{`$${product.price}`}</span>
                       <span className=' w-20 2xl:w-fit flex justify-center border border-primary px-2 py-1 leading-3 h-fit rounded-md
                       text-xs 2xl:text-base opacity-90 font-medium'
                       >{`${product.category[0].toUpperCase()}${product.category.slice(1)}`}
@@ -77,6 +78,6 @@ export const ProductList = ({ products }) => {
           <Toaster />
         </div>
         )
-      : <p>No hay productos disponibles...</p>
+      : <ProductsNotFound />
   )
 }

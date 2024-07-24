@@ -3,6 +3,7 @@ import { useCart } from '../hooks/useCart'
 import { ArrowLeftIcon } from '../components/icons/ArrowLeftIcon'
 import { Link, useNavigate } from 'react-router-dom'
 import { BagIcon } from '../components/icons/BagIcon'
+import shoppingCart from '../assets/img/shoppingCart.webp'
 
 export const CartPage = () => {
   const { cart, clearCart } = useCart()
@@ -68,15 +69,16 @@ export const CartPage = () => {
             <ArrowLeftIcon />
           </span>
         </button>
-        <div className={`${cart.length === 0 ? 'flex' : 'hidden'} flex-col items-center text-lg gap-3 2xl:gap-6`}>
+        <div className={`${cart.length === 0 ? 'flex' : 'hidden'} flex-col items-center text-lg gap-2 2xl:gap-8`}>
           <h3 className='text-2xl lg:text-3xl 2xl:text-4xl font-bold'>Your Shopping Cart is <span className='text-primary text-3xl'>EMPTY</span></h3>
-          <div className='bg-[rgba(8,145,178,0.2)] rounded-full drop-shadow-[0_0_8px_rgba(8,145,178,1)] p-4'>
-            <svg
-              xmlns='http://www.w3.org/2000/svg' className='h-60 2xl:h-96' viewBox='0 0 24 24' fill='none'
-              stroke='currentColor' strokeWidth='1' strokeLinecap='round' strokeLinejoin='round'
-            ><path stroke='none' d='M0 0h24v24H0z' fill='none' /><path d='M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0' /><path d='M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0' /><path d='M17 17h-11v-14h-2' /><path d='M6 5l14 1l-1 7h-13' />
-            </svg>
-          </div>
+          {/* <div className='bg-[rgba(8,145,178,0.2)] rounded-full drop-shadow-[0_0_8px_rgba(8,145,178,1)] p-4'> */}
+          {/* <svg
+            xmlns='http://www.w3.org/2000/svg' className='h-52 2xl:h-72' viewBox='0 0 24 24' fill='none'
+            stroke='currentColor' strokeWidth='1' strokeLinecap='round' strokeLinejoin='round'
+          ><path stroke='none' d='M0 0h24v24H0z' fill='none' /><path d='M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0' /><path d='M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0' /><path d='M17 17h-11v-14h-2' /><path d='M6 5l14 1l-1 7h-13' />
+          </svg> */}
+          <img className='h-64 2xl:h-96' src={shoppingCart} alt='Shopping cart empty' />
+          {/* </div> */}
           <p className='text-base sm:text-lg lg:text-xl 2xl:text-xl font-semibold w-[99%] md:w-[80%] text-center'>Looks like you have not added anything to your cart.
             <span className='text-primary'> Explore our offers!</span>, we have hundreds of products from the best brands.
           </p>

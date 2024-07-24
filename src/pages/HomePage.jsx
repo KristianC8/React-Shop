@@ -12,7 +12,7 @@ export const HomePage = () => {
           <p className='text-base sm:text-lg lg:text-xl 2xl:text-2xl mt-3 text-secondaryLight dark:text-secondaryDark'>Work, play and create with maximum efficiency thanks to our high-performance laptops.</p>
           <div className='flex flex-col sm:flex-row gap-4 mt-3'>
             <Link to='/products'>
-              <button className='flex items-center gap-2 w-full sm:w-fit text-base sm:text-lg lg:text-xl 2xl:text-2xl px-4 py-2 bg-primary rounded font-bold'>
+              <button className='flex items-center justify-center gap-2 w-full sm:w-fit text-base sm:text-lg lg:text-xl 2xl:text-2xl px-4 py-2 bg-primary rounded font-bold'>
                 <BagIcon />
                 Start Shoping
               </button>
