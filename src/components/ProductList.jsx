@@ -39,12 +39,14 @@ export const ProductList = ({ products }) => {
                   key={product.id} className=' rounded-t-md overflow-hidden border-secondaryLight rounded-md shadow-lg
                 dark:shadow-[0_8px_6px_-6px_rgba(167,170,185,0.1)]'
                 >
-                  <Link to={`/products/${product.id}`}>
-                    <img
-                      className=' w-full aspect-[1/1] object-contain bg-bgImgGray dark:bg-secondaryDark'
-                      src={product.image} alt={`Image of ${product.name}`}
-                    />
-                  </Link>
+                  <div className='overflow-hidden'>
+                    <Link to={`/products/${product.id}`}>
+                      <img
+                        className=' w-full aspect-[1/1] object-contain bg-bgImgGray dark:bg-secondaryDark hover:scale-105 transition-all'
+                        src={product.image} alt={`Image of ${product.name}`}
+                      />
+                    </Link>
+                  </div>
                   <div className='flex flex-col gap-2 2xl:gap-4 px-6 py-3'>
                     <div className=' flex gap-2 justify-between items-center'>
                       <span className='h-9 text-2xl 2xl:text-3xl font-semibold'>{`$${product.price}`}</span>

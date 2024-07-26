@@ -12,16 +12,16 @@ export const Brands = () => {
       </div>
       <ul className='flex flex-wrap justify-center gap-12 md:gap-24 xl:gap-36'>
         <li className='flex'>
-          <img className='h-10 sm:h-16 2xl:h-20' src={apple} alt='Apple Logo' />
+          <img className='h-10 sm:h-20 2xl:h-28' src={apple} alt='Apple Logo' />
         </li>
         <li className='flex'>
-          <img className='h-10 sm:h-16 2xl:h-20' src={rolex} alt='Rolex Logo' />
+          <img className='h-10 sm:h-20 2xl:h-28' src={rolex} alt='Rolex Logo' />
         </li>
         <li className='flex'>
-          <img className='h-10 sm:h-16 2xl:h-20' src={ducati} alt='Ducati Logo' />
+          <img className='h-10 sm:h-20 2xl:h-28' src={ducati} alt='Ducati Logo' />
         </li>
         <li className='flex'>
-          <img className='h-10 sm:h-16 2xl:h-20' src={samsung} alt='Samsung Logo' />
+          <img className='h-10 sm:h-20 2xl:h-28' src={samsung} alt='Samsung Logo' />
         </li>
       </ul>
     </section>
