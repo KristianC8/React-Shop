@@ -11,6 +11,7 @@ export const Login = () => {
     isAuthenticated,
     isLoginVisible,
     formData,
+    buttonId,
     handleLogout,
     isMenuUserVisible,
     handleOpenModal,
@@ -87,7 +88,7 @@ export const Login = () => {
               <form
                 onSubmit={(e) => {
                   handleSubmitLogin(e)
-                  notifyAddCart()
+                  if (buttonId === 'products' || buttonId === 'products') notifyAddCart()
                 }} className='flex flex-col gap-4'
               >
                 <div className='flex flex-col gap-1'>

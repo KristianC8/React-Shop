@@ -7,21 +7,56 @@ import { DetailProductPage } from '../pages/DetailProductPage'
 import { getDetailProduct } from '../helpers/getDetailProduct'
 import { CartPage } from '../pages/CartPage'
 import { PaymentPage } from '../pages/PaymentPage'
+import Layout from '../layout/Layout'
+import { AboutPage } from '../pages/AboutPage'
 
 export const router = createBrowserRouter([
+  // {
+  //   path: '/',
+  //   element: <AppLayout />,
+  //   errorElement: <ErrorPage />,
+  //   children: [
+  //     {
+  //       index: true,
+  //       element: <HomePage />
+  //     },
+  //     {
+  //       path: '/products',
+  //       element: <ProductsPage />
+  //     },
+  //     {
+  //       path: '/products/:id',
+  //       element: <DetailProductPage />,
+  //       loader: getDetailProduct
+  //     },
+  //     {
+  //       path: '/shop_cart',
+  //       element: <CartPage />
+  //     },
+  //     {
+  //       path: '/payment',
+  //       element: <PaymentPage />
+  //     }
+  //   ]
+  // }
   {
-    path: '/',
     element: <AppLayout />,
     errorElement: <ErrorPage />,
     children: [
       {
-        index: true,
+        path: '/',
         element: <HomePage />
       },
       {
         path: '/products',
         element: <ProductsPage />
-      },
+      }
+    ]
+  },
+  {
+    element: <Layout />,
+    errorElement: <ErrorPage />,
+    children: [
       {
         path: '/products/:id',
         element: <DetailProductPage />,
@@ -34,6 +69,10 @@ export const router = createBrowserRouter([
       {
         path: '/payment',
         element: <PaymentPage />
+      },
+      {
+        path: '/about',
+        element: <AboutPage />
       }
     ]
   }

@@ -1,15 +1,15 @@
 import { useCart } from '../hooks/useCart'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useLogin } from '../hooks/useLogin'
 import { ShoppingCartPlusIcon } from './icons/ShoppingCartPlusIcon'
-import { ShoppingCartXIcon } from './icons/ShoppingCartXIcon'
+import { ShoppingCartGoIcon } from './icons/ShoppingCartGoIcon'
 import toast, { Toaster } from 'react-hot-toast'
 import 'tailwindcss/tailwind.css'
 import { ProductsNotFound } from './ProductsNotFound'
 
 export const ProductList = ({ products }) => {
   const { isAuthenticated, handleOpenModal, handleActualProduct } = useLogin()
-  const { cart, addToCart, removeFromCart } = useCart()
+  const { cart, addToCart } = useCart()
   const isItemInCart = (product) => cart.some(item => item.id === product.id)
   const notifyAddCart = () => toast.success('successfully added to cart', {
     duration: 2000,
@@ -20,6 +20,11 @@ export const ProductList = ({ products }) => {
       secondary: '#fff'
     }
   })
+  const navigate = useNavigate()
+
+  const goToCart = () => {
+    navigate('/shop_cart')
+  }
 
   return (
     products?.length > 0
@@ -54,7 +59,8 @@ export const ProductList = ({ products }) => {
                         if (product.stock === 0) return
                         if (isAuthenticated) {
                           if (isInCart) {
-                            removeFromCart(product)
+                            // removeFromCart(product)
+                            goToCart()
                           } else {
                             addToCart(product)
                             notifyAddCart()
@@ -65,8 +71,8 @@ export const ProductList = ({ products }) => {
                         }
                       }} className={`${product.stock === 0 ? 'bg-cyan-950' : 'bg-primary'} w-full flex justify-center items-center gap-1
                      2xl:gap-4 px-3 py-1 rounded-md text-base 2xl:text-2xl font-medium`}
-                    >{isInCart ? <ShoppingCartXIcon /> : <ShoppingCartPlusIcon />}
-                      <span>{product.stock === 0 ? 'Out of Stock' : isInCart ? 'Remove From Cart' : 'Add To Cart'}</span>
+                    >{isInCart ? <ShoppingCartGoIcon /> : <ShoppingCartPlusIcon />}
+                      <span>{product.stock === 0 ? 'Out of Stock' : isInCart ? 'Go to Cart' : 'Add To Cart'}</span>
                     </button>
 
                   </div>

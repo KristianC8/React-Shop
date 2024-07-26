@@ -4,14 +4,14 @@ import { useCart } from '../hooks/useCart'
 import { useLogin } from '../hooks/useLogin'
 import { ArrowLeftIcon } from '../components/icons/ArrowLeftIcon'
 import { ShoppingCartPlusIcon } from '../components/icons/ShoppingCartPlusIcon'
-import { ShoppingCartXIcon } from '../components/icons/ShoppingCartXIcon'
+import { ShoppingCartGoIcon } from '../components/icons/ShoppingCartGoIcon'
 import toast, { Toaster } from 'react-hot-toast'
 import 'tailwindcss/tailwind.css'
 
 export const DetailProductPage = () => {
   const { mappedProduct } = useLoaderData()
   const [principalImg, setPrincipalImg] = useState(mappedProduct.images[0])
-  const { cart, addToCart, removeFromCart } = useCart()
+  const { cart, addToCart } = useCart()
   const isItemInCart = (product) => cart.some(item => item.id === product.id)
   const isInCart = isItemInCart(mappedProduct)
   // console.log(mappedProduct)
@@ -32,6 +32,10 @@ export const DetailProductPage = () => {
       secondary: '#fff'
     }
   })
+
+  const goToCart = () => {
+    navigate('/shop_cart')
+  }
 
   return (
     <section className='detailProduct flex justify-center items-center min-h-screen-dvh py-4 lg:py-0'>
@@ -85,7 +89,8 @@ export const DetailProductPage = () => {
               if (mappedProduct.stock === 0) return
               if (isAuthenticated) {
                 if (isInCart) {
-                  removeFromCart(mappedProduct)
+                  // removeFromCart(mappedProduct)
+                  goToCart()
                 } else {
                   addToCart(mappedProduct)
                   notifyAddCart()
@@ -95,12 +100,12 @@ export const DetailProductPage = () => {
                 handleActualProduct(mappedProduct)
               }
             }}
-          >{isInCart ? <ShoppingCartXIcon /> : <ShoppingCartPlusIcon />}
-            <span>{mappedProduct.stock === 0 ? 'Out of Stock' : isInCart ? 'Remove From Cart' : 'Add To Cart'}</span>
+          >{isInCart ? <ShoppingCartGoIcon /> : <ShoppingCartPlusIcon />}
+            <span>{mappedProduct.stock === 0 ? 'Out of Stock' : isInCart ? 'Go to Cart' : 'Add To Cart'}</span>
           </button>
         </div>
         <button
-          className=' absolute top-2 right-2 bg-secondaryLight text-primaryLight px-0 py-2 sm:px-2 sm:py-1 rounded'
+          className=' absolute top-4 right-2 bg-secondaryLight text-primaryLight px-0 py-2 sm:px-2 sm:py-1 rounded'
           onClick={handleNavigateBack}
         >
           <span className='hidden sm:block 2xl:text-xl'>

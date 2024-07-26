@@ -16,13 +16,15 @@ export const Header = () => {
         <nav className='items-center gap-4 hidden md:flex font-medium'>
           <NavLink to='/' className={({ isActive }) => (isActive ? ' text-primary' : undefined) + ' text-lg leading-5 2xl:text-xl 2xl:leading-6'}>Home</NavLink>
           <NavLink to='/products' className={({ isActive }) => (isActive ? ' text-primary' : undefined) + ' text-lg leading-5 2xl:text-xl 2xl:leading-6'}>Products</NavLink>
-          <NavLink to='any' className={({ isActive }) => (isActive ? ' text-primary' : undefined) + ' text-lg leading-5 2xl:text-xl 2xl:leading-6'}>Any</NavLink>
+          <NavLink to='/about' className={({ isActive }) => (isActive ? ' text-primary' : undefined) + ' text-lg leading-5 2xl:text-xl 2xl:leading-6'}>About</NavLink>
         </nav>
       </div>
       <div className='flex items-center justify-end md:gap-1 w-[185px]'>
         <Login />
         <ShopCart />
-        <Theme />
+        <div className='hidden md:block'>
+          <Theme />
+        </div>
         <ButtonMobileMenu />
       </div>
 

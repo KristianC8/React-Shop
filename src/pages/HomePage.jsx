@@ -2,6 +2,7 @@ import laptop from '../assets/img/laptopp.webp'
 import { Brands } from '../components/Brands'
 import { Link } from 'react-router-dom'
 import { BagIcon } from '../components/icons/BagIcon'
+import { Offers } from '../components/Offers'
 
 export const HomePage = () => {
   return (
@@ -17,7 +18,9 @@ export const HomePage = () => {
                 Start Shoping
               </button>
             </Link>
-            <button className='sm:w-fit text-base sm:text-lg lg:text-xl 2xl:text-2xl px-4 py-2 bg-secondaryLight rounded font-bold text-primaryLight'>About</button>
+            <Link to='/about'>
+              <button className='w-full sm:w-fit text-base sm:text-lg lg:text-xl 2xl:text-2xl px-4 py-2 bg-secondaryLight rounded font-bold text-primaryLight'>About</button>
+            </Link>
           </div>
         </div>
         {/* <div className=' h-4/5 bg-[url("/src/assets/img/laptopp.webp")] bg-center bg-contain bg-no-repeat ' /> */}
@@ -26,6 +29,7 @@ export const HomePage = () => {
         </div>
       </section>
       <Brands />
+      <Offers />
     </>
   )
 }
