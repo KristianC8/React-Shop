@@ -1,4 +1,5 @@
-import laptop from '../assets/img/laptopp.webp'
+// eslint-disable-next-line import/no-absolute-path
+import laptop from '/laptopp.webp'
 import { Brands } from '../components/Brands'
 import { Link } from 'react-router-dom'
 import { BagIcon } from '../components/icons/BagIcon'

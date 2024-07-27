@@ -1,4 +1,5 @@
-import logo from '../assets/img/LogoGray.svg'
+// eslint-disable-next-line import/no-absolute-path
+import logo from '/LogoGray.svg'
 import { GitHubIcon } from '../components/icons/GitHubIcon'
 import { LinkedInIcon } from '../components/icons/LinkedInIcon'
 import { PortfolioIcon } from '../components/icons/PortfolioIcon'

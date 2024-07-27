@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom'
 import { BagIcon } from '../components/icons/BagIcon'
 import { CheckIcon } from '../components/icons/CheckIcon'
 import { HomeIcon } from '../components/icons/HomeIcon'
-import imagePay from '../assets/img/ImagePay.webp'
+// eslint-disable-next-line import/no-absolute-path
+import imagePay from '/ImagePay.webp'
 import { useState } from 'react'
 import { Loader } from '../components/icons/Loader'
 
@@ -14,7 +15,7 @@ export const PaymentPage = () => {
 
   setTimeout(() => {
     setIsLoading(false)
-  }, 2000)
+  }, 1500)
 
   return (
     isLoading

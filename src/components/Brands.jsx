@@ -1,7 +1,11 @@
-import rolex from '../assets/img/RolexLogo.png'
-import apple from '../assets/img/AppleLogo.png'
-import ducati from '../assets/img/DucatiLogo.png'
-import samsung from '../assets/img/SamsungLogo.png'
+// eslint-disable-next-line import/no-absolute-path
+import rolex from '/RolexLogo.png'
+// eslint-disable-next-line import/no-absolute-path
+import apple from '/AppleLogo.png'
+// eslint-disable-next-line import/no-absolute-path
+import ducati from '/DucatiLogo.png'
+// eslint-disable-next-line import/no-absolute-path
+import samsung from '/SamsungLogo.png'
 
 export const Brands = () => {
   return (

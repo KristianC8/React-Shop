@@ -1,4 +1,5 @@
-import notFound from '../assets/img/NoResults.webp'
+// eslint-disable-next-line import/no-absolute-path
+import notFound from '/NoResults.webp'
 
 export const ProductsNotFound = () => {
   return (

@@ -3,7 +3,8 @@ import { useCart } from '../hooks/useCart'
 import { ArrowLeftIcon } from '../components/icons/ArrowLeftIcon'
 import { Link, useNavigate } from 'react-router-dom'
 import { BagIcon } from '../components/icons/BagIcon'
-import shoppingCart from '../assets/img/shoppingCart.webp'
+// eslint-disable-next-line import/no-absolute-path
+import shoppingCart from '/shoppingCart.webp'
 
 export const CartPage = () => {
   const { cart, clearCart } = useCart()

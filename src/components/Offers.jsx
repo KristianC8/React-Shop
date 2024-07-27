@@ -1,7 +1,11 @@
-import coupon from '../assets/img/coupon.webp'
-import fastShipping from '../assets/img/fastShipping.png'
-import wallet from '../assets/img/wallet.png'
-import lowPrice from '../assets/img/lowPrice.png'
+// eslint-disable-next-line import/no-absolute-path
+import coupon from '/coupon.webp'
+// eslint-disable-next-line import/no-absolute-path
+import fastShipping from '/fastShipping.png'
+// eslint-disable-next-line import/no-absolute-path
+import wallet from '/wallet.png'
+// eslint-disable-next-line import/no-absolute-path
+import lowPrice from '/lowPrice.png'
 
 export const Offers = () => {
   return (
