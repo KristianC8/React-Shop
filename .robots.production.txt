@@ -2,9 +2,6 @@ User-agent: *
 
 Allow: /
 
-# Host
-Host: https://react-shop-bib.pages.dev/
-
 Disallow: /admin/
 Disallow: /private/
 Disallow: /cgi-bin/

@@ -7,6 +7,7 @@ export default defineConfig({
   plugins: [react(),
     robots({
       /* pass your config */
+      filePath: '.robots.production.txt'
     })
   ]
 })
