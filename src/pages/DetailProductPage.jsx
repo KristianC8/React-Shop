@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { useLoaderData, useNavigate } from 'react-router-dom'
 import { useCart } from '../hooks/useCart'
-import { useLogin } from '../hooks/useLogin'
 import { ArrowLeftIcon } from '../components/icons/ArrowLeftIcon'
 import { ShoppingCartPlusIcon } from '../components/icons/ShoppingCartPlusIcon'
 import { ShoppingCartGoIcon } from '../components/icons/ShoppingCartGoIcon'
 import toast, { Toaster } from 'react-hot-toast'
 import 'tailwindcss/tailwind.css'
+import { useAuthenticated } from '../hooks/useAuthenticated'
 
 export const DetailProductPage = () => {
   const { mappedProduct } = useLoaderData()
@@ -15,7 +15,7 @@ export const DetailProductPage = () => {
   const isItemInCart = (product) => cart.some(item => item.id === product.id)
   const isInCart = isItemInCart(mappedProduct)
   // console.log(mappedProduct)
-  const { isAuthenticated, handleOpenModal, handleActualProduct } = useLogin()
+  const { isAuthenticated, handleOpenModal, handleActualProduct } = useAuthenticated()
 
   const navigate = useNavigate()
 
@@ -92,7 +92,14 @@ export const DetailProductPage = () => {
                   // removeFromCart(mappedProduct)
                   goToCart()
                 } else {
+                  /* global sessionStorage */
                   addToCart(mappedProduct)
+                  const newCart = [...cart, {
+                    ...mappedProduct,
+                    quantity: 1,
+                    stock: mappedProduct.stock - 1
+                  }]
+                  sessionStorage.setItem('cart', JSON.stringify(newCart))
                   notifyAddCart()
                 }
               } else {

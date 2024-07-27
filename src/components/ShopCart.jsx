@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useLogin } from '../hooks/useLogin'
 import { ShoppingCartIcon } from '../components/icons/ShoppingCartIcon'
 import { useCart } from '../hooks/useCart'
+import { useAuthenticated } from '../hooks/useAuthenticated'
 
 export const ShopCart = () => {
-  const { isAuthenticated, handleOpenModal } = useLogin()
+  const { isAuthenticated, handleOpenModal } = useAuthenticated()
   const { cart } = useCart()
   const [totalItems, setTotalItems] = useState(0)
 

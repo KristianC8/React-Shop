@@ -1,14 +1,14 @@
 import { useCart } from '../hooks/useCart'
 import { Link, useNavigate } from 'react-router-dom'
-import { useLogin } from '../hooks/useLogin'
 import { ShoppingCartPlusIcon } from './icons/ShoppingCartPlusIcon'
 import { ShoppingCartGoIcon } from './icons/ShoppingCartGoIcon'
 import toast, { Toaster } from 'react-hot-toast'
 import 'tailwindcss/tailwind.css'
 import { ProductsNotFound } from './ProductsNotFound'
+import { useAuthenticated } from '../hooks/useAuthenticated'
 
 export const ProductList = ({ products }) => {
-  const { isAuthenticated, handleOpenModal, handleActualProduct } = useLogin()
+  const { isAuthenticated, handleOpenModal, handleActualProduct } = useAuthenticated()
   const { cart, addToCart } = useCart()
   const isItemInCart = (product) => cart.some(item => item.id === product.id)
   const notifyAddCart = () => toast.success('successfully added to cart', {
@@ -64,7 +64,14 @@ export const ProductList = ({ products }) => {
                             // removeFromCart(product)
                             goToCart()
                           } else {
+                            /* global sessionStorage */
                             addToCart(product)
+                            const newCart = [...cart, {
+                              ...product,
+                              quantity: 1,
+                              stock: product.stock - 1
+                            }]
+                            sessionStorage.setItem('cart', JSON.stringify(newCart))
                             notifyAddCart()
                           }
                         } else {

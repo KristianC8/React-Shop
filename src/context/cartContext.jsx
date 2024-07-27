@@ -3,7 +3,12 @@ import { createContext, useState } from 'react'
 export const cartContext = createContext()
 
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([])
+  const [cart, setCart] = useState(() => {
+    /* global sessionStorage */
+    const sessionCart = sessionStorage.getItem('cart')
+    if (!sessionCart) return []
+    return JSON.parse(sessionCart)
+  })
 
   const addToCart = product => {
     // Validar si el producto ya esta en el carrito

@@ -5,23 +5,27 @@ import { UserCircleIcon } from './icons/UserCircleIcon'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useCart } from '../hooks/useCart'
 import toast, { Toaster } from 'react-hot-toast'
+import { useAuthenticated } from '../hooks/useAuthenticated'
 
 export const Login = () => {
   const {
-    isAuthenticated,
-    isLoginVisible,
     formData,
-    buttonId,
-    handleLogout,
     isMenuUserVisible,
-    handleOpenModal,
-    handleCloseModal,
     handleSubmitLogin,
     handleMenuUser,
     handleMenuUserClick
   } = useLogin()
 
-  const { clearCart } = useCart()
+  const {
+    isAuthenticated,
+    isLoginVisible,
+    buttonId,
+    handleLogout,
+    handleOpenModal,
+    handleCloseModal
+  } = useAuthenticated()
+
+  const { cart, clearCart } = useCart()
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -50,6 +54,7 @@ export const Login = () => {
               <span className='font-bold 2xl:text-xl'>{sessionStorage.getItem('user').split('"')}</span>
               <button
                 onClick={() => {
+                  sessionStorage.setItem('cart', JSON.stringify(cart))
                   handleLogout()
                   handleMenuUser()
                   clearCart()

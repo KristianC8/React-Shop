@@ -5,19 +5,14 @@ import { useCart } from './useCart'
 
 export const useLogin = () => {
   const {
-    isAuthenticated,
-    isLoginVisible,
     buttonId,
     actualProduct,
     handleLogin,
-    handleLogout,
-    handleOpenModal,
-    handleCloseModal,
-    handleActualProduct
+    handleCloseModal
   } = useAuthenticated()
   // const [isLoginVisible, setIsLoginVisible] = useState(false)
 
-  const { addToCart } = useCart()
+  const { cart, setCart, addToCart } = useCart()
 
   const formData = {
     user: 'Test User',
@@ -60,32 +55,39 @@ export const useLogin = () => {
     if ((formData.user === 'Test User') && (formData.password === 'PassUser.007')) {
       /* global sessionStorage */
       sessionStorage.setItem('user', JSON.stringify(formData.user))
+      if (sessionStorage.getItem('cart')) setCart(JSON.parse(sessionStorage.getItem('cart')))
       handleLogin()
       if (buttonId === 'cart') {
         navigate('/shop_cart')
       }
       if (buttonId === 'products') {
         addToCart(actualProduct)
+        const newCart = [...cart, {
+          ...actualProduct,
+          quantity: 1,
+          stock: actualProduct.stock - 1
+        }]
+        sessionStorage.setItem('cart', JSON.stringify(newCart))
       }
       if (buttonId === 'product') {
         addToCart(actualProduct)
+        const newCart = [...cart, {
+          ...actualProduct,
+          quantity: 1,
+          stock: actualProduct.stock - 1
+        }]
+        sessionStorage.setItem('cart', JSON.stringify(newCart))
       }
     }
     handleCloseModal()
   }
 
   return {
-    isAuthenticated,
-    isLoginVisible,
     formData,
     buttonId,
-    handleLogout,
     isMenuUserVisible,
-    handleOpenModal,
-    handleCloseModal,
     handleSubmitLogin,
     handleMenuUser,
-    handleMenuUserClick,
-    handleActualProduct
+    handleMenuUserClick
   }
 }
