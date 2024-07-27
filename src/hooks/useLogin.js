@@ -60,24 +60,41 @@ export const useLogin = () => {
       if (buttonId === 'cart') {
         navigate('/shop_cart')
       }
-      if (buttonId === 'products') {
-        addToCart(actualProduct)
-        const newCart = [...cart, {
-          ...actualProduct,
-          quantity: 1,
-          stock: actualProduct.stock - 1
-        }]
-        sessionStorage.setItem('cart', JSON.stringify(newCart))
+      if (buttonId === 'products' || buttonId === 'product') {
+        const sessionCart = JSON.parse(sessionStorage.getItem('cart'))
+        if (sessionCart) {
+          const productInCartIndex = sessionCart.findIndex(item => item.id === actualProduct.id)
+          if (productInCartIndex === -1) {
+            addToCart(actualProduct)
+            const newCart = [...cart, {
+              ...actualProduct,
+              quantity: 1,
+              stock: actualProduct.stock - 1
+            }]
+            sessionStorage.setItem('cart', JSON.stringify(newCart))
+          }
+        } else {
+          addToCart(actualProduct)
+          const newCart = [...cart, {
+            ...actualProduct,
+            quantity: 1,
+            stock: actualProduct.stock - 1
+          }]
+          sessionStorage.setItem('cart', JSON.stringify(newCart))
+        }
       }
-      if (buttonId === 'product') {
-        addToCart(actualProduct)
-        const newCart = [...cart, {
-          ...actualProduct,
-          quantity: 1,
-          stock: actualProduct.stock - 1
-        }]
-        sessionStorage.setItem('cart', JSON.stringify(newCart))
-      }
+      // if (buttonId === 'product') {
+      //   const productInCartIndex = JSON.parse(sessionStorage.getItem('cart')).findIndex(item => item.id === actualProduct.id)
+      //   if (productInCartIndex === -1) {
+      //     addToCart(actualProduct)
+      //     const newCart = [...cart, {
+      //       ...actualProduct,
+      //       quantity: 1,
+      //       stock: actualProduct.stock - 1
+      //     }]
+      //     sessionStorage.setItem('cart', JSON.stringify(newCart))
+      //   }
+      // }
     }
     handleCloseModal()
   }

@@ -103,7 +103,7 @@ export const DetailProductPage = () => {
                   notifyAddCart()
                 }
               } else {
-                handleOpenModal('products')
+                handleOpenModal('product')
                 handleActualProduct(mappedProduct)
               }
             }}

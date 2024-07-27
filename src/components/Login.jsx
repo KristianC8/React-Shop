@@ -93,7 +93,7 @@ export const Login = () => {
               <form
                 onSubmit={(e) => {
                   handleSubmitLogin(e)
-                  if (buttonId === 'products' || buttonId === 'products') notifyAddCart()
+                  if (buttonId === 'products' || buttonId === 'product') notifyAddCart()
                 }} className='flex flex-col gap-4'
               >
                 <div className='flex flex-col gap-1'>
