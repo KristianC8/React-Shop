@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react'
+// import { useEffect, useState } from 'react'
 import { ShoppingCartXIcon } from '../components/icons/ShoppingCartXIcon'
 import { useCart } from '../hooks/useCart'
 
 export const CartItem = ({ name, price, quantity, image, stock, product }) => {
   const { removeFromCart, addToCart, removeItem } = useCart()
-  const [isBtnDisabled, setIsBtnDisabled] = useState()
+  // const [isBtnDisabled, setIsBtnDisabled] = useState()
 
-  useEffect(() => {
-    if (quantity <= 1) setIsBtnDisabled(true)
-    else { setIsBtnDisabled(() => { return false }) }
-  }, [quantity])
+  // useEffect(() => {
+  //   if (quantity <= 1) setIsBtnDisabled(true)
+  //   else { setIsBtnDisabled(() => { return false }) }
+  // }, [quantity])
 
   return (
     <article className='flex flex-wrap justify-between'>
@@ -35,7 +35,7 @@ export const CartItem = ({ name, price, quantity, image, stock, product }) => {
             removeItem(product)
           }}
           className=' w-8 h-8 bg-primary rounded-md 2xl:text-2xl'
-          disabled={isBtnDisabled}
+          // disabled={isBtnDisabled}
         >-
         </button>
         <span className='2xl:text-2xl'>{quantity}</span>
