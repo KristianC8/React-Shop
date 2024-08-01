@@ -38,7 +38,7 @@ export const CartItem = ({ name, price, quantity, image, stock, product }) => {
           // disabled={isBtnDisabled}
         >-
         </button>
-        <span className='2xl:text-2xl'>{quantity}</span>
+        <span className='2xl:text-2xl h-8 flex items-center'>{quantity}</span>
         <button
           onClick={() => {
             addToCart(product)
