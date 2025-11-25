@@ -7,7 +7,8 @@ export const Filters = () => {
   const inputPriceId = useId()
   // const inputCategoryId = useId()
 
-  const { categories, handleChangeCheck, handleChangeCheckAll } = useCategories()
+  const { categories, handleChangeCheck, handleChangeCheckAll } =
+    useCategories()
   const { filters, setFilters } = useFilteredProducts()
 
   const handleChangePrice = (e) => {
@@ -22,7 +23,9 @@ export const Filters = () => {
       {/* <label htmlFor={inputPriceId}>Precio</label>
       <input type='range' id={inputPriceId} min={0} max={1000} step={10} className='w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700' /> */}
       <div className='2xl:text-xl relative mb-6 w-full'>
-        <label htmlFor={inputPriceId} className=''>Price higher than:</label>
+        <label htmlFor={inputPriceId} className=''>
+          Price higher than:
+        </label>
         <input
           id={inputPriceId}
           type='range'
@@ -51,11 +54,13 @@ export const Filters = () => {
         {categories.map((category, i) => (
           // <div key={i} className='check flex gap-2 px-6 py-2 bg-gradient-to-r from-zinc-200 dark:from-zinc-900  dark:to-transparent border-x-2 border-cyan-600'>
           <label
-            key={i} className={
-            category.checked
-              ? 'check flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-zinc-200 dark:from-zinc-900 border-x-2 border-primary leading-5 2xl:text-lg'
-              : 'check flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-zinc-200 dark:from-zinc-900 border-l-2 border-transparent leading-5 2xl:text-lg'
-          } htmlFor={category.id}
+            key={i}
+            className={
+              category.checked
+                ? 'check flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-zinc-200 dark:from-zinc-900 border-x-2 border-primary leading-5 2xl:text-lg'
+                : 'check flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-zinc-200 dark:from-zinc-900 border-l-2 border-transparent leading-5 2xl:text-lg'
+            }
+            htmlFor={category.id}
           >
             <input
               className=' w-4 h-4 m-0 accent-primary '
@@ -63,7 +68,11 @@ export const Filters = () => {
               id={category.id}
               name={category.name}
               checked={category.checked}
-              onChange={category.name === 'all' ? handleChangeCheckAll : handleChangeCheck}
+              onChange={
+                category.name === 'all'
+                  ? handleChangeCheckAll
+                  : handleChangeCheck
+              }
             />
             {category.label}
           </label>
@@ -84,7 +93,6 @@ export const Filters = () => {
           Default checkbox
         </label>
       </div> */}
-
     </aside>
   )
 }
